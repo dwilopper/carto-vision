@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body class="dashboard-page" data-user-role="{{ user.role }}">
+  <div class="dashboard-shell">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <h1>CartoVision</h1>
+        <p class="topbar-note">Система генерации картограмм</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="history-toggle" type="button" class="ghost-button history-button">История</button>
+        <div class="user-badge">
+          <span>{{ user.username }}</span>
+          <small>{{ "Администратор" if user.role == "admin" else "Пользователь" }}</small>
+        </div>
+        <form method="post" action="/auth/logout">
+          <button type="submit" class="ghost-button">Выйти</button>
+        </form>
+      </div>
+    </header>
+
+    <div class="workspace-layout">
+      <aside class="control-column">
+        <section class="panel section-card">
+          <div class="section-header">
+            <p class="section-step">Шаг 1</p>
+            <h2>Источники данных</h2>
+          </div>
+
+          <details class="source-disclosure">
+            <summary>Выбрать готовые датасеты</summary>
+            <div id="source-list" class="source-list"></div>
+          </details>
+
+          <form id="upload-form" class="stack-form compact-form">
+            <label>
+              <span>Файл CSV или Excel</span>
+              <input id="upload-file" type="file" name="file" accept=".csv,.xlsx,.xls" required>
+            </label>
+            <label>
+              <span>Название набора</span>
+              <input id="dataset-name" type="text" name="dataset_name" placeholder="Например, Региональная статистика 2024" required>
+            </label>
+            <label>
+              <span>Описание</span>
+              <textarea id="dataset-description" name="description" rows="2" placeholder="Краткое описание набора данных"></textarea>
+            </label>
+            <button type="submit" class="primary-button">Загрузить набор</button>
+          </form>
+        </section>
+
+        <section class="panel section-card">
+          <div class="section-header">
+            <p class="section-step">Шаг 2</p>
+            <h2>Подготовка данных</h2>
+          </div>
+          <label class="standalone-field">
+            <span>Активный датасет</span>
+            <select id="dataset-select"></select>
+          </label>
+          <div id="dataset-meta" class="meta-box"></div>
+          <div class="two-col-grid">
+            <label>
+              <span>Колонка ID территории</span>
+              <select id="region-id-column"></select>
+            </label>
+            <label>
+              <span>Колонка названия территории</span>
+              <select id="region-name-column"></select>
+            </label>
+            <label>
+              <span>Метод агрегации</span>
+              <select id="aggregation">
+                <option value="sum">Сумма</option>
+                <option value="mean">Среднее</option>
+                <option value="median">Медиана</option>
+                <option value="max">Максимум</option>
+                <option value="min">Минимум</option>
+                <option value="last">Последнее значение</option>
+              </select>
+            </label>
+            <label>
+              <span>Показатель для карты</span>
+              <select id="value-column"></select>
+            </label>
+            <label>
+              <span>Поле фильтра</span>
+              <select id="filter-column"></select>
+            </label>
+            <label>
+              <span>Значение фильтра</span>
+              <input id="filter-value" type="text" placeholder="Например, 2024">
+            </label>
+            <label>
+              <span>Нормализация</span>
+              <select id="normalization">
+                <option value="none">Без нормализации</option>
+                <option value="minmax">Min-max</option>
+                <option value="zscore">Z-score</option>
+                <option value="per_unit">На единицу показателя</option>
+              </select>
+            </label>
+            <label>
+              <span>Колонка делителя</span>
+              <select id="denominator-column"></select>
+            </label>
+            <label>
+              <span>Множитель для нормализации</span>
+              <input id="multiplier" type="number" min="1" step="1" value="1000">
+            </label>
+          </div>
+          <div id="dataset-preview" class="preview-box"></div>
+        </section>
+
+        <section class="panel section-card">
+          <div class="section-header">
+            <p class="section-step">Шаг 3</p>
+            <h2>Визуализация</h2>
+          </div>
+          <div class="two-col-grid">
+            <label>
+              <span>Территориальный слой</span>
+              <select id="layer-select"></select>
+            </label>
+            <label>
+              <span>Метод классификации</span>
+              <select id="classification-method">
+                <option value="equal">Равные интервалы</option>
+                <option value="quantiles">Квантили</option>
+                <option value="natural_breaks">Естественные разрывы (Jenks)</option>
+              </select>
+            </label>
+            <label>
+              <span>Количество классов</span>
+              <select id="class-count">
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </label>
+            <label>
+              <span>Палитра</span>
+              <select id="palette-select"></select>
+            </label>
+            <label class="wide-field">
+              <span>Название сохраняемой сессии</span>
+              <input id="session-name" type="text" placeholder="Например, Безработица по регионам за 2024 год">
+            </label>
+          </div>
+          <button id="generate-button" type="button" class="primary-button wide-button">Сгенерировать картограмму</button>
+        </section>
+
+        {% if user.role == "admin" %}
+        <section class="panel section-card admin-card">
+          <div class="section-header">
+            <p class="section-step">Admin</p>
+            <h2>Управление системой</h2>
+          </div>
+          <form id="source-form" class="stack-form compact-form">
+            <h3>Добавить URL-источник</h3>
+            <label>
+              <span>Название</span>
+              <input id="source-name" type="text" required>
+            </label>
+            <label>
+              <span>Описание</span>
+              <textarea id="source-description" rows="2"></textarea>
+            </label>
+            <label>
+              <span>Формат</span>
+              <input id="source-format" type="text" placeholder="csv / json / api">
+            </label>
+            <label>
+              <span>URL</span>
+              <input id="source-url" type="url" placeholder="https://example.org/data.csv" required>
+            </label>
+            <button type="submit" class="secondary-button">Создать источник</button>
+          </form>
+          <form id="layer-form" class="stack-form compact-form">
+            <h3>Загрузить новый GeoJSON-слой</h3>
+            <label>
+              <span>Название слоя</span>
+              <input id="layer-name" type="text" required>
+            </label>
+            <label>
+              <span>Описание</span>
+              <textarea id="layer-description" rows="2"></textarea>
+            </label>
+            <label>
+              <span>GeoJSON-файл</span>
+              <input id="layer-file" type="file" accept=".geojson,.json" required>
+            </label>
+            <button type="submit" class="secondary-button">Добавить слой</button>
+          </form>
+        </section>
+        {% endif %}
+      </aside>
+
+      <main class="result-column">
+        <section class="map-panel">
+          <div class="map-toolbar">
+            <div>
+              <h3 id="map-title">Картограмма еще не построена</h3>
+              <p id="map-subtitle">Выберите датасет, показатель и параметры визуализации, чтобы сформировать результат.</p>
+            </div>
+            <div id="export-links" class="export-links"></div>
+          </div>
+          <div id="map-stage" class="map-stage">
+            <div id="map"></div>
+            <div id="map-placeholder" class="map-placeholder">
+              <strong>Здесь появится картограмма</strong>
+              <p>Выберите активный датасет, настройте параметры и нажмите «Сгенерировать картограмму».</p>
+            </div>
+            <div id="legend-box" class="legend-box"></div>
+          </div>
+          <div class="map-filter-bar">
+            <label>
+              <span>Показывать значения от</span>
+              <input id="range-min" type="number" step="0.01">
+            </label>
+            <label>
+              <span>до</span>
+              <input id="range-max" type="number" step="0.01">
+            </label>
+            <button id="apply-range-filter" type="button" class="ghost-button">Применить фильтр</button>
+            <button id="reset-range-filter" type="button" class="ghost-button">Сбросить</button>
+          </div>
+        </section>
+
+        <section class="summary-grid">
+          <article class="summary-card">
+            <p>Показатель</p>
+            <strong id="summary-metric">-</strong>
+          </article>
+          <article class="summary-card">
+            <p>Покрытие регионов</p>
+            <strong id="summary-coverage">-</strong>
+          </article>
+          <article class="summary-card">
+            <p>Диапазон значений</p>
+            <strong id="summary-range">-</strong>
+          </article>
+          <article class="summary-card">
+            <p>Среднее / медиана</p>
+            <strong id="summary-stats">-</strong>
+          </article>
+        </section>
+
+        <section class="panel detail-panel">
+          <div class="section-header">
+            <p class="section-step">Аналитика</p>
+            <h2>Результат генерации</h2>
+          </div>
+          <div id="analysis-notes" class="analysis-notes"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="history-backdrop" class="history-backdrop hidden"></div>
+  <section id="history-popover" class="history-popover hidden" aria-hidden="true">
+    <div class="history-popover-header">
+      <div>
+        <p class="section-step">История</p>
+        <h2>Сохраненные сессии</h2>
+      </div>
+      <button id="history-close" type="button" class="ghost-button">Закрыть</button>
+    </div>
+    <div id="session-list" class="session-list"></div>
+  </section>
+
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/vendor/leaflet/leaflet.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

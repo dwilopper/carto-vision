@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-hero">
+      <h1>CartoVision</h1>
+      <p class="hero-copy">
+        Веб-приложение для загрузки статистических данных, их обработки и построения
+        картограмм по территориальным слоям в едином интерфейсе.
+      </p>
+      <div class="demo-cards">
+        <article class="demo-card">
+          <h2>Пользователь</h2>
+          <p><strong>Логин:</strong> <code>demo</code></p>
+          <p><strong>Пароль:</strong> <code>demo123</code></p>
+          <p>Доступ к загрузке наборов данных, настройке параметров визуализации и просмотру результатов.</p>
+        </article>
+        <article class="demo-card">
+          <h2>Администратор</h2>
+          <p><strong>Логин:</strong> <code>admin</code></p>
+          <p><strong>Пароль:</strong> <code>admin123</code></p>
+          <p>Дополнительно может управлять источниками данных и территориальными слоями системы.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-panel-inner">
+        <p class="panel-kicker">Вход в систему</p>
+        <h2>Авторизация</h2>
+        <form method="post" action="/auth/login" class="stack-form">
+          <label>
+            <span>Имя пользователя</span>
+            <input type="text" name="username" placeholder="demo" required>
+          </label>
+          <label>
+            <span>Пароль</span>
+            <input type="password" name="password" placeholder="demo123" required>
+          </label>
+          <button type="submit" class="primary-button">Войти в приложение</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
