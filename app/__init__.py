@@ -1,0 +1,1 @@
+"""Diploma cartogram web application."""
