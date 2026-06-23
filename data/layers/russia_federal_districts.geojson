@@ -1,0 +1,686 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "northwestern_federal_district",
+        "code": "NWFD",
+        "short_label": "СЗФО",
+        "name_ru": "Северо-Западный федеральный округ",
+        "name_en": "Northwestern Federal District",
+        "join_keys": [
+          "northwestern_federal_district",
+          "NWFD",
+          "северо-западный федеральный округ",
+          "northwestern federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                66.75,
+                238.3
+              ],
+              [
+                88.75,
+                309.1
+              ],
+              [
+                119.0,
+                374.0
+              ],
+              [
+                160.25,
+                409.4
+              ],
+              [
+                198.75,
+                403.5
+              ],
+              [
+                213.6,
+                364.56
+              ],
+              [
+                205.9,
+                324.44
+              ],
+              [
+                215.8,
+                293.76
+              ],
+              [
+                202.6,
+                267.8
+              ],
+              [
+                179.5,
+                253.64
+              ],
+              [
+                146.5,
+                246.56
+              ],
+              [
+                110.75,
+                230.04
+              ],
+              [
+                80.5,
+                222.96
+              ],
+              [
+                66.75,
+                238.3
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                45.3,
+                199.36
+              ],
+              [
+                54.1,
+                220.6
+              ],
+              [
+                65.1,
+                215.88
+              ],
+              [
+                67.3,
+                192.28
+              ],
+              [
+                55.2,
+                185.2
+              ],
+              [
+                45.3,
+                199.36
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "central_federal_district",
+        "code": "CFD",
+        "short_label": "ЦФО",
+        "name_ru": "Центральный федеральный округ",
+        "name_en": "Central Federal District",
+        "join_keys": [
+          "central_federal_district",
+          "CFD",
+          "центральный федеральный округ",
+          "central federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                94.25,
+                179.3
+              ],
+              [
+                110.75,
+                230.04
+              ],
+              [
+                146.5,
+                246.56
+              ],
+              [
+                179.5,
+                253.64
+              ],
+              [
+                202.6,
+                267.8
+              ],
+              [
+                218.0,
+                234.76
+              ],
+              [
+                211.4,
+                197.0
+              ],
+              [
+                185.0,
+                171.04
+              ],
+              [
+                149.25,
+                163.96
+              ],
+              [
+                116.25,
+                166.32
+              ],
+              [
+                94.25,
+                179.3
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "southern_federal_district",
+        "code": "SFD",
+        "short_label": "ЮФО",
+        "name_ru": "Южный федеральный округ",
+        "name_en": "Southern Federal District",
+        "join_keys": [
+          "southern_federal_district",
+          "SFD",
+          "южный федеральный округ",
+          "southern federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                84.9,
+                123.84
+              ],
+              [
+                95.9,
+                161.6
+              ],
+              [
+                116.25,
+                166.32
+              ],
+              [
+                149.25,
+                163.96
+              ],
+              [
+                179.5,
+                171.04
+              ],
+              [
+                172.9,
+                135.64
+              ],
+              [
+                144.3,
+                119.12
+              ],
+              [
+                110.75,
+                116.76
+              ],
+              [
+                84.9,
+                123.84
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "north_caucasian_federal_district",
+        "code": "NCFD",
+        "short_label": "СКФО",
+        "name_ru": "Северо-Кавказский федеральный округ",
+        "name_en": "North Caucasian Federal District",
+        "join_keys": [
+          "north_caucasian_federal_district",
+          "NCFD",
+          "северо-кавказский федеральный округ",
+          "north caucasian federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                132.75,
+                88.44
+              ],
+              [
+                144.3,
+                119.12
+              ],
+              [
+                172.9,
+                135.64
+              ],
+              [
+                201.5,
+                128.56
+              ],
+              [
+                209.75,
+                104.96
+              ],
+              [
+                190.5,
+                90.8
+              ],
+              [
+                157.5,
+                81.36
+              ],
+              [
+                132.75,
+                88.44
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "volga_federal_district",
+        "code": "VFD",
+        "short_label": "ПФО",
+        "name_ru": "Приволжский федеральный округ",
+        "name_en": "Volga Federal District",
+        "join_keys": [
+          "volga_federal_district",
+          "VFD",
+          "приволжский федеральный округ",
+          "volga federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                202.6,
+                267.8
+              ],
+              [
+                215.8,
+                293.76
+              ],
+              [
+                205.9,
+                324.44
+              ],
+              [
+                223.5,
+                356.3
+              ],
+              [
+                270.25,
+                368.1
+              ],
+              [
+                317.0,
+                357.48
+              ],
+              [
+                341.75,
+                324.44
+              ],
+              [
+                336.25,
+                267.8
+              ],
+              [
+                319.75,
+                237.12
+              ],
+              [
+                286.75,
+                226.5
+              ],
+              [
+                249.9,
+                230.04
+              ],
+              [
+                218.0,
+                234.76
+              ],
+              [
+                202.6,
+                267.8
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "ural_federal_district",
+        "code": "UFD",
+        "short_label": "УФО",
+        "name_ru": "Уральский федеральный округ",
+        "name_en": "Ural Federal District",
+        "join_keys": [
+          "ural_federal_district",
+          "UFD",
+          "уральский федеральный округ",
+          "ural federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                317.0,
+                357.48
+              ],
+              [
+                361.0,
+                352.76
+              ],
+              [
+                394.0,
+                329.16
+              ],
+              [
+                405.0,
+                281.96
+              ],
+              [
+                400.6,
+                241.84
+              ],
+              [
+                377.5,
+                214.7
+              ],
+              [
+                344.5,
+                218.24
+              ],
+              [
+                319.75,
+                237.12
+              ],
+              [
+                336.25,
+                267.8
+              ],
+              [
+                341.75,
+                324.44
+              ],
+              [
+                317.0,
+                357.48
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "siberian_federal_district",
+        "code": "SibFD",
+        "short_label": "СФО",
+        "name_ru": "Сибирский федеральный округ",
+        "name_en": "Siberian Federal District",
+        "join_keys": [
+          "siberian_federal_district",
+          "SibFD",
+          "сибирский федеральный округ",
+          "siberian federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                361.0,
+                352.76
+              ],
+              [
+                443.5,
+                374.0
+              ],
+              [
+                517.75,
+                364.56
+              ],
+              [
+                561.75,
+                340.96
+              ],
+              [
+                585.4,
+                309.1
+              ],
+              [
+                587.6,
+                267.8
+              ],
+              [
+                567.25,
+                237.12
+              ],
+              [
+                535.9,
+                218.24
+              ],
+              [
+                491.9,
+                206.44
+              ],
+              [
+                438.0,
+                208.8
+              ],
+              [
+                400.6,
+                241.84
+              ],
+              [
+                405.0,
+                281.96
+              ],
+              [
+                394.0,
+                329.16
+              ],
+              [
+                361.0,
+                352.76
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "region_id": "far_eastern_federal_district",
+        "code": "FEFD",
+        "short_label": "ДФО",
+        "name_ru": "Дальневосточный федеральный округ",
+        "name_en": "Far Eastern Federal District",
+        "join_keys": [
+          "far_eastern_federal_district",
+          "FEFD",
+          "дальневосточный федеральный округ",
+          "far eastern federal district"
+        ]
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                517.75,
+                364.56
+              ],
+              [
+                581.0,
+                391.7
+              ],
+              [
+                644.25,
+                374.0
+              ],
+              [
+                699.25,
+                336.24
+              ],
+              [
+                729.5,
+                303.2
+              ],
+              [
+                718.5,
+                272.52
+              ],
+              [
+                743.25,
+                250.1
+              ],
+              [
+                732.25,
+                222.96
+              ],
+              [
+                700.9,
+                230.04
+              ],
+              [
+                681.1,
+                199.36
+              ],
+              [
+                652.5,
+                152.16
+              ],
+              [
+                618.4,
+                159.24
+              ],
+              [
+                590.9,
+                197.0
+              ],
+              [
+                567.25,
+                237.12
+              ],
+              [
+                587.6,
+                267.8
+              ],
+              [
+                585.4,
+                309.1
+              ],
+              [
+                561.75,
+                340.96
+              ],
+              [
+                517.75,
+                364.56
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                717.4,
+                309.1
+              ],
+              [
+                735.0,
+                350.4
+              ],
+              [
+                765.8,
+                343.32
+              ],
+              [
+                774.6,
+                317.36
+              ],
+              [
+                765.25,
+                293.76
+              ],
+              [
+                736.1,
+                291.4
+              ],
+              [
+                717.4,
+                309.1
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                645.9,
+                199.36
+              ],
+              [
+                653.6,
+                237.12
+              ],
+              [
+                663.5,
+                227.68
+              ],
+              [
+                659.1,
+                192.28
+              ],
+              [
+                645.9,
+                199.36
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "name": "Russia Federal Districts Schematic",
+    "projection": "schematic-simple",
+    "note": "Presentation-safe simplified layer with non-overlapping federal districts."
+  }
+}
